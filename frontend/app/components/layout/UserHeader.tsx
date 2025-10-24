@@ -67,7 +67,7 @@ export function UserHeader() {
                   {user?.email}
                 </p>
                 <p className="text-xs text-gray-600 capitalize">
-                  {user?.user_type?.replace('_', ' ')}
+                  {user?.role?.replace('_', ' ')}
                 </p>
               </div>
             </div>

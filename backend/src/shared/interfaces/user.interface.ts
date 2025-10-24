@@ -4,7 +4,7 @@ export interface IUser {
   id: string;
   email: string;
   phone?: string;
-  user_type: UserType;
+  role: UserType;
   is_active: boolean;
   is_verified: boolean;
   created_at: Date;

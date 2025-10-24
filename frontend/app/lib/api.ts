@@ -55,12 +55,22 @@ export const vehicleAPI = {
   byId: (id: string | number) => api.get(`/vehicles/${id}`),
   getById: (id: string | number) => api.get(`/vehicles/${id}`),
   getOnline: () => api.get('/vehicles/online'),
-  getNearby: (lat: number, lng: number, radius = 5) => api.get(`/vehicles/nearby?lat=${lat}&lng=${lng}&radius=${radius}`),
+  getNearby: (lat: number, lng: number, radius = 5) =>
+    api.get(`/vehicles/nearby?lat=${lat}&lng=${lng}&radius=${radius}`),
   getByType: (type: string) => api.get(`/vehicles/type/${type}`),
-  updateLocation: (id: string | number, payload: any) => api.patch(`/vehicles/${id}/location`, payload),
-  toggleSound: (id: string | number, enabled: boolean) => api.patch(`/vehicles/${id}/sound/${enabled}`),
-  updateStatus: (id: string | number, status: string) => api.patch(`/vehicles/${id}/status/${status}`),
-};
+
+  create: (payload: any) => api.post('/vehicles', payload),
+  update: (id: string | number, payload: any) => api.put(`/vehicles/${id}`, payload),
+  delete: (id: string | number) => api.delete(`/vehicles/${id}`),
+
+  updateLocation: (id: string | number, payload: any) =>
+    api.patch(`/vehicles/${id}/location`, payload),
+  toggleSound: (id: string | number, enabled: boolean) =>
+    api.patch(`/vehicles/${id}/sound/${enabled}`),
+  updateStatus: (id: string | number, status: string) =>
+    api.patch(`/vehicles/${id}/status/${status}`),
+}
+
 
 export const orderAPI = {
   list: () => api.get('/orders'),
@@ -69,6 +79,8 @@ export const orderAPI = {
   getById: (id: string | number) => api.get(`/orders/${id}`),
   getByVehicle: (vehicleId: string | number) => api.get(`/orders/vehicle/${vehicleId}`),
   getByUser: (userId: string | number) => api.get(`/orders/user/${userId}`),
+  updateStatus: (id: string | number, status: string) => api.patch(`/orders/${id}/status`, { status }),
+  delete: (id: string | number) => api.delete(`/orders/${id}`),
 };
 
 export const inventoryAPI = {
@@ -88,4 +100,6 @@ export const userAPI = {
   getAll: () => api.get('/users'),
   create: (payload: any) => api.post('/users', payload),
   getById: (id: string | number) => api.get(`/users/${id}`),
+  update: (id: string | number, payload: any) => api.put(`/users/${id}`, payload),
+  delete: (id: string | number) => api.delete(`/users/${id}`),
 };

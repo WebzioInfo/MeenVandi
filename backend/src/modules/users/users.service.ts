@@ -53,7 +53,7 @@ export class UsersService {
 
   async getUsersByType(userType: UserType): Promise<User[]> {
     return await this.usersRepository.find({
-      where: { user_type: userType },
+      where: { role: userType },
       order: { created_at: 'DESC' }
     });
   }

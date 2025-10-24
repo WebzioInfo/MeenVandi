@@ -1,7 +1,8 @@
 import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
-  return clsx(inputs);
+  return twMerge(clsx(inputs))
 }
 
 export function formatCurrency(amount: number): string {
@@ -18,6 +19,20 @@ export function formatDistance(distance: number): string {
     return `${Math.round(distance * 1000)}m`;
   }
   return `${distance.toFixed(1)}km`;
+}
+
+export const getLoadingText = (context: string) => {
+  const texts: Record<string, string> = {
+    default: 'Loading...',
+    users: 'Loading users...',
+    vehicles: 'Loading vehicles...',
+    orders: 'Loading orders...',
+    routes: 'Loading routes...',
+    payments: 'Loading payments...',
+    inventory: 'Loading inventory...',
+    dashboard: 'Loading dashboard...',
+  }
+  return texts[context] || texts.default
 }
 
 export function formatTime(minutes: number): string {

@@ -14,7 +14,7 @@ export default function RegisterPage() {
     password: '',
     confirmPassword: '',
     phone: '',
-    user_type: 'customer'
+    role: 'customer'
   });
   const [error, setError] = useState('');
   const { register, loading } = useAuth();
@@ -41,7 +41,7 @@ export default function RegisterPage() {
         email: formData.email,
         password: formData.password,
         phone: formData.phone,
-        user_type: formData.user_type
+        role: formData.role
       });
       router.push('/user/dashboard');
     } catch (err: any) {
@@ -118,8 +118,8 @@ export default function RegisterPage() {
                 Account Type
               </label>
               <select
-                name="user_type"
-                value={formData.user_type}
+                name="role"
+                value={formData.role}
                 onChange={handleChange}
                 className="input-field"
               >

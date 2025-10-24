@@ -17,7 +17,7 @@ export class AuthService {
     ) { }
 
     async register(registerDto: RegisterDto): Promise<{ user: Omit<User, 'password'>; accessToken: string }> {
-        const { email, password, phone, user_type } = registerDto;
+        const { email, password, phone, role } = registerDto;
 
         // Check if user exists
         const existingUser = await this.usersRepository.findOne({ where: { email } });
@@ -33,7 +33,7 @@ export class AuthService {
             email,
             password: hashedPassword,
             phone,
-            user_type: user_type || UserType.CUSTOMER,
+            role: role || UserType.CUSTOMER,
         });
 
         const savedUser = await this.usersRepository.save(user);
@@ -53,7 +53,7 @@ export class AuthService {
         // Find user
         const user = await this.usersRepository.findOne({
             where: { email },
-            select: ['id', 'email', 'password', 'user_type', 'is_active', 'is_verified']
+            select: ['id', 'email', 'password', 'role', 'is_active', 'is_verified']
         });
 
         if (!user || !(await bcrypt.compare(password, user.password))) {
@@ -77,7 +77,7 @@ export class AuthService {
         const payload = {
             sub: user.id,
             email: user.email,
-            user_type: user.user_type
+            role: user.role
         };
 
         return this.jwtService.sign(payload);

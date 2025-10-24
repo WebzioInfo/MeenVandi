@@ -23,6 +23,10 @@ export class User {
   @Exclude()
   password: string;
 
+  @Column({ type: 'varchar', length: 255 })
+  @ApiProperty()
+  name: string;
+
   @Column({ 
     type: 'varchar', 
     length: 50,
@@ -30,7 +34,7 @@ export class User {
     default: UserType.CUSTOMER 
   })
   @ApiProperty({ enum: UserType })
-  user_type: UserType;
+  role: UserType;
 
   @Column({ type: 'bit', default: 1 })
   @ApiProperty()

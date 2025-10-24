@@ -13,7 +13,7 @@ export const useOrders = () => {
 
   useEffect(() => {
     if (user) {
-      if (user.user_type === 'customer') {
+      if (user.role === 'customer') {
         fetchUserOrders(user.id);
       } else {
         fetchOrders();
@@ -36,6 +36,6 @@ export const useOrders = () => {
     loading,
     getOrdersByStatus,
     getPendingOrders,
-    refreshOrders: user?.user_type === 'customer' ? () => fetchUserOrders(user.id) : fetchOrders,
+    refreshOrders: user?.role === 'customer' ? () => fetchUserOrders(user.id) : fetchOrders,
   };
 };

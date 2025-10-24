@@ -24,5 +24,5 @@ export class RegisterDto {
   })
   @IsOptional()
   @IsEnum(UserType)
-  user_type?: UserType;
+  role?: UserType;
 }

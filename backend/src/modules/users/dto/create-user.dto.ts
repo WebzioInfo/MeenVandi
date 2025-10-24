@@ -22,5 +22,5 @@ export class CreateUserDto {
     example: UserType.CUSTOMER 
   })
   @IsEnum(UserType)
-  user_type: UserType;
+  role: UserType;
 }

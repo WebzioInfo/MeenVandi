@@ -21,7 +21,7 @@ export default function HomePage() {
 
   useEffect(() => {
     if (isAuthenticated && user) {
-      router.push(`/${user.user_type}/dashboard`);
+      router.push(`/${user.role}/dashboard`);
     }
   }, [isAuthenticated, user, router]);
 

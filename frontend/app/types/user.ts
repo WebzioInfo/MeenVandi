@@ -1,8 +1,9 @@
 export interface User {
   id: string;
   email: string;
+  name: string;
   phone?: string;
-  user_type: UserType;
+  role: UserType;
   is_active: boolean;
   is_verified: boolean;
   created_at: string;

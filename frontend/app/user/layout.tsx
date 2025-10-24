@@ -17,9 +17,9 @@ const inter = Inter({
 function Guard({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
   const router = useRouter();
-  useEffect(() => {
-    if (!isAuthenticated) router.replace('/login');
-  }, [isAuthenticated, router]);
+  // useEffect(() => {
+  //   if (!isAuthenticated) router.replace('/login');
+  // }, [isAuthenticated, router]);
   return <>{children}</>;
 }
 
